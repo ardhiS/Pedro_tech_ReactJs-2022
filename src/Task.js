@@ -1,9 +1,9 @@
 export const Task = (props) => {
   return (
-    <div className="task" style={{ backgroundColor: props.completed ? "green" : "white" }}>
-      <h1>{props.namanya}</h1>
-      <button onClick={() => props.hapusItem(props.id)}>X</button>
-      <button onClick={() => props.selesai(props.id)}>Completed</button>
+    <div className="task" style={{ backgroundColor: props.task.selesai ? "green" : "white" }}>
+      <h1>{props.task.nama}</h1>
+      <button onClick={() => props.hapusItem(props.task.id)}>X</button>
+      <button onClick={() => props.tandaiSelesai(props.task.id)}>Completed</button>
     </div>
   );
 };

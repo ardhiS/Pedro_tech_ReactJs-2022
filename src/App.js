@@ -1,5 +1,5 @@
 import "./App.css";
-
+import { Task } from "./Task";
 import { useState } from "react";
 
 const App = () => {
@@ -42,11 +42,7 @@ const App = () => {
       </div>
       <div className="listnya">
         {data.map((item) => (
-          <div key={item.id} style={{ backgroundColor: item.selesai ? "green" : "white" }}>
-            <h1>{item.nama}</h1>
-            <button onClick={() => hapusItem(item.id)}>Hapus Nama</button>
-            <button onClick={() => tandaiSelesai(item.id)}>{item.selesai ? "Bukan Nama Saya" : "Nama Saya"}</button>
-          </div>
+          <Task key={item.id} task={item} hapusItem={hapusItem} tandaiSelesai={tandaiSelesai} />
         ))}
       </div>
     </div>
