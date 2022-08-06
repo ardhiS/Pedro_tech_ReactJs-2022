@@ -1,18 +1,19 @@
 import Axios from "axios";
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 function Fetch() {
-  const [catFact, setCatfact] = useState("");
-  const catFetch = () => {
-    Axios.get("https://catfact.ninja/fact").then((res) => setCatfact(res.data.fact));
+  const [data, setData] = useState("");
+  const fetchData = (excuse) => {
+    Axios.get(`https://excuser.herokuapp.com/v1/excuse/${excuse}/`).then((res) => setData(res.data[0].excuse));
   };
-  useEffect(() => {
-    catFetch();
-  }, []);
+
   return (
-    <div className="name">
-      <button onClick={catFetch}>Generate Button</button>
-      <p>{catFact}</p>
+    <div style={{ textAlign: "center", marginTop: "20%" }}>
+      <h1>Generate Excuse Button</h1>
+      <button onClick={() => fetchData("party")}>Party</button>
+      <button onClick={() => fetchData("family")}>Family</button>
+      <button onClick={() => fetchData("office")}>Office</button>
+      <h1>{data}</h1>
     </div>
   );
 }
